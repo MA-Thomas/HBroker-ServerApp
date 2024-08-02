@@ -1,0 +1,13 @@
+[package]
+name = "HBroker-ServerApp"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+config = "0.13"
+warp = "0.3"
+tokio = { version = "1", features = ["full"] }
+
+h_bank = { path = "../h_bank" }
