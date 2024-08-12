@@ -2,16 +2,8 @@ use actix_web::{App, HttpServer};
 use std::sync::{Arc, Mutex};
 use std::collections::HashMap;
 
-use h_bank::api::{
-    public_api::configure_app,
-    data_manager::DataManager,
-    execution_engine::ExecutionEngine,
-    archive_system::ArchiveSystem,
-    result_processor::ResultProcessor,
-};
-
-// Assuming AppState and JobStatus are defined in one of the api submodules
-use h_bank::api::models::{AppState, JobStatus};
+// Import everything from the api_prelude
+use h_bank::api_prelude::*;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
