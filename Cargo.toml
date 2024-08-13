@@ -10,7 +10,7 @@ config = "0.13"
 warp = "0.3"
 tokio = { version = "1", features = ["full"] }
 
-h_bank = { path = "../h_bank" }
+HBank = { path = "../HBank" }
 
 actix-web = "4.0"
 
