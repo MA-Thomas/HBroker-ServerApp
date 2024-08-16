@@ -1,7 +1,8 @@
 use reqwest::Client;
-use crate::api::shared_models::{CodeSubmission, AnalysisResult, SyntheticDataSetup, CohortInfo};
+use crate::svrapp_api::svrapp_shared_models::{CodeSubmission, AnalysisResult, SyntheticDataSetup, CohortSummary};
 use std::error::Error;
-
+use serde_json;
+ 
 pub struct HBankCommunication {
     client: Client,
     base_url: String,
@@ -17,14 +18,14 @@ impl HBankCommunication {
         }
     }
 
-    pub async fn get_cohort_info(&self, cohort_id: &str) -> Result<CohortInfo, Box<dyn Error>> {
+    pub async fn get_cohort_info(&self, cohort_id: &str) -> Result<CohortSummary, Box<dyn Error>> {
         let url = format!("{}/api/cohort/{}", self.base_url, cohort_id);
         let response = self.client.get(&url)
             .header("Server-App-ID", &self.server_app_id)
             .send()
             .await?;
         
-        let cohort_info = response.json::<CohortInfo>().await?;
+        let cohort_info = response.json::<CohortSummary>().await?;
         Ok(cohort_info)
     }
 

@@ -4,5 +4,4 @@ Software Architecture Design Philosophy: Modular Monolith (perhaps migrating to 
 */
 
 pub mod svrapp_api;
-pub mod svrapp_endpoints; 
 pub mod svrapp_execution;

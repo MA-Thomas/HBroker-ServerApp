@@ -2,9 +2,9 @@ use actix_web::{web, HttpResponse, Responder};
 use serde_json::json;
 use uuid::Uuid;
 
-use crate::api::hbank_communication::HBankCommunication;
-use crate::api::shared_models::{CodeSubmission, SyntheticDataSetup, AnalysisResult};
-use crate::execution::engine::{ExecutionEngine, ExecutionEngineTrait};
+use crate::svrapp_api::svrapp_hbank_communication::HBankCommunication;
+use crate::svrapp_api::svrapp_shared_models::{CodeSubmission, SyntheticDataSetup, AnalysisResult};
+use crate::svrapp_execution::svrapp_engine::{ExecutionEngine, ExecutionEngineTrait};
 
 pub async fn submit_code(
     submission: web::Json<CodeSubmission>,
