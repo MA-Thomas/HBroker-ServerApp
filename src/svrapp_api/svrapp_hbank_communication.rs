@@ -1,13 +1,14 @@
 use h_bank::api_prelude::*;
+use std::path::PathBuf;
 
 pub struct HBankCommunication {
     hbank: HBankInterface,
 }
 
 impl HBankCommunication {
-    pub fn new() -> Self {
+    pub fn new(base_data_path: PathBuf) -> Self {
         Self {
-            hbank: HBankInterface::new(),
+            hbank: HBankInterface::new(base_data_path),
         }
     }
 
