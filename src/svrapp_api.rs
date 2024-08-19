@@ -1,10 +1,9 @@
-pub mod svrapp_shared_models;
-pub mod svrapp_hbank_communication;
-pub mod svrapp_api_endpoints;
+mod svrapp_hbank_communication;
+mod svrapp_api_endpoints;
 
+pub use svrapp_hbank_communication::HBankCommunication;
+pub use svrapp_api_endpoints::configure_api;
 
-
-
-use reqwest::Client;
-use crate::svrapp_api::svrapp_shared_models::{CohortSummary, SyntheticDataSetup, CodeSubmission, AnalysisResult};
-
+pub mod shared_models {
+    pub use h_bank::api_prelude::*;
+}

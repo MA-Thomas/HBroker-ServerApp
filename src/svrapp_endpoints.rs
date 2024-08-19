@@ -1,1 +1,0 @@
-pub mod svrapp_api_endpoints;
