@@ -1,19 +1,20 @@
-use crate::execution::vm_trait::VirtualMachine;
-use crate::execution::firecracker_vm::FirecrackerVM;
-use crate::execution::docker_container::DockerContainer;
+use crate::svrapp_execution::svrapp_vm_trait::VirtualMachine;
+use crate::svrapp_execution::svrapp_wasm_runtime::WasmRuntime;
 
 pub enum VMType {
-    Firecracker,
-    Docker,
+    Wasm,
+    // Firecracker,  // Comment out or remove if no longer needed
+    // Docker,  // Comment out or remove if no longer needed
 }
 
 pub struct VMFactory;
 
 impl VMFactory {
-    pub async fn create_vm(&self, vm_type: VMType) -> Box<dyn VirtualMachine> {
+    pub fn create_vm(&self, vm_type: VMType) -> Box<dyn VirtualMachine> {
         match vm_type {
-            VMType::Firecracker => Box::new(FirecrackerVM::new().await),
-            VMType::Docker => Box::new(DockerContainer::new().await),
+            VMType::Wasm => Box::new(WasmRuntime::new()),
+            // VMType::Firecracker => Box::new(FirecrackerVM::new()),  // Remove if no longer needed
+            // VMType::Docker => Box::new(DockerContainer::new()),  // Remove if no longer needed
         }
     }
 }

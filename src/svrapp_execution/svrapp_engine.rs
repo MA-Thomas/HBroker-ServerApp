@@ -14,8 +14,8 @@ pub struct ExecutionEngine {
 
 #[async_trait]
 pub trait ExecutionEngineTrait: Send + Sync {
-    async fn queue_job(&mut self, job_id: &str, submission: &CodeSubmission) -> Result<(), Box<dyn std::error::Error + Send + Sync>>;
-    async fn get_job_status(&self, job_id: &str) -> Option<JobStatus>;
+    async fn queue_job(&self, submission: &CodeSubmission) -> Result<String, Box<dyn std::error::Error + Send + Sync>>;
+    async fn get_job_status(&self, job_id: &str) -> Option<String>;
     async fn run_next_job(&mut self) -> Option<Result<AnalysisResult, Box<dyn std::error::Error + Send + Sync>>>;
 }
 
@@ -31,8 +31,12 @@ impl ExecutionEngine {
 
 #[async_trait]
 impl ExecutionEngineTrait for ExecutionEngine {
-    async fn queue_job(&mut self, job_id: &str, submission: &CodeSubmission) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-        self.job_queue.push((job_id.to_string(), submission.clone()));
+    // async fn queue_job(&mut self, job_id: &str, submission: &CodeSubmission) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    //     self.job_queue.push((job_id.to_string(), submission.clone()));
+    //     Ok(())
+    // }
+    async fn queue_job(&self, submission: &CodeSubmission) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
+        self.job_queue.push(submission.clone());
         Ok(())
     }
 

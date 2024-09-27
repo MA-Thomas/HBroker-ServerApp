@@ -29,4 +29,15 @@ impl HBankCommunication {
     }
 
     // Add other methods as needed...
+    
+    pub async fn submit_wasm_for_remote_execution(&self, submission: &CodeSubmission) -> Result<String, Box<dyn Error>> {
+        // Implement logic to send WASM module to HBank for execution
+        // Return a job ID for tracking
+        unimplemented!()
+    }
+
+    pub async fn get_remote_execution_result(&self, job_id: &str) -> Result<AnalysisResult, Box<dyn Error>> {
+        // Implement logic to retrieve results of remote execution from HBank
+        unimplemented!()
+    }
 }
